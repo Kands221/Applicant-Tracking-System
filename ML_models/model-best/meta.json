@@ -1,0 +1,111 @@
+{
+  "lang":"en",
+  "name":"pipeline",
+  "version":"0.0.0",
+  "spacy_version":">=3.6.0,<3.7.0",
+  "description":"",
+  "author":"",
+  "email":"",
+  "url":"",
+  "license":"",
+  "spacy_git_version":"6fc153a26",
+  "vectors":{
+    "width":0,
+    "vectors":0,
+    "keys":0,
+    "name":null,
+    "mode":"default"
+  },
+  "labels":{
+    "transformer":[
+
+    ],
+    "ner":[
+      "College Name",
+      "Companies worked at",
+      "Degree",
+      "Designation",
+      "Email Address",
+      "Graduation Year",
+      "Location",
+      "Name",
+      "Skills",
+      "Years of Experience"
+    ]
+  },
+  "pipeline":[
+    "transformer",
+    "ner"
+  ],
+  "components":[
+    "transformer",
+    "ner"
+  ],
+  "disabled":[
+
+  ],
+  "performance":{
+    "ents_f":0.510851419,
+    "ents_p":0.534965035,
+    "ents_r":0.4888178914,
+    "ents_per_type":{
+      "Name":{
+        "p":0.873015873,
+        "r":0.9322033898,
+        "f":0.9016393443
+      },
+      "Location":{
+        "p":0.6610169492,
+        "r":0.6446280992,
+        "f":0.6527196653
+      },
+      "Email Address":{
+        "p":0.7666666667,
+        "r":0.9787234043,
+        "f":0.8598130841
+      },
+      "Companies worked at":{
+        "p":0.4166666667,
+        "r":0.3658536585,
+        "f":0.3896103896
+      },
+      "College Name":{
+        "p":0.4705882353,
+        "r":0.4507042254,
+        "f":0.4604316547
+      },
+      "Skills":{
+        "p":0.2446808511,
+        "r":0.1402439024,
+        "f":0.1782945736
+      },
+      "Designation":{
+        "p":0.5197368421,
+        "r":0.6124031008,
+        "f":0.5622775801
+      },
+      "Degree":{
+        "p":0.5696202532,
+        "r":0.75,
+        "f":0.6474820144
+      },
+      "Graduation Year":{
+        "p":0.6944444444,
+        "r":0.3676470588,
+        "f":0.4807692308
+      },
+      "Years of Experience":{
+        "p":0.125,
+        "r":0.0714285714,
+        "f":0.0909090909
+      },
+      "UNKNOWN":{
+        "p":0.0,
+        "r":0.0,
+        "f":0.0
+      }
+    },
+    "transformer_loss":13434.6164191477,
+    "ner_loss":29754.0609341176
+  }
+}

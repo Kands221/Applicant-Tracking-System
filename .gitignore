@@ -9,4 +9,3 @@ db.sqlite3
 .env
 
 myvenv/
-ML_models/
