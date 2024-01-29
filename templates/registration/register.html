@@ -1,0 +1,56 @@
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .form-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <div class="form-container">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">Registration</h2>
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="mb-4">
+                    <label for="{{ field.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">
+                        {{ field.label }}
+                    </label>
+                    {% if field.name == 'role' %}
+                        <div class="flex items-center mb-2">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="{{ field.name }}" value="employer" class="form-radio" {% if field.value == 'employer' %} checked {% endif %}>
+                                <span class="ml-2">Employer</span>
+                            </label>
+                        </div>
+                        <div class="flex items-center">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="{{ field.name }}" value="applicant" class="form-radio" {% if field.value == 'applicant' %} checked {% endif %}>
+                                <span class="ml-2">Applicant</span>
+                            </label>
+                        </div>
+                    {% else %}
+                        {{ field|add_class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" }}
+                    {% endif %}
+                    {% if field.errors %}
+                        <span class="text-red-500 text-xs italic">{{ field.errors }}</span>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Register
+            </button>
+        </form>
+    </div>
+</body>
+</html>

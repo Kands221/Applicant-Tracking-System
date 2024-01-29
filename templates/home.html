@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Title</title>
+    <!-- Tailwind CSS -->
+    <!-- Custom CSS for second HTML -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar from first HTML -->
+    <nav class="bg-indigo-800">
+        <div class="container mx-auto">
+            <div class="flex justify-between">
+                <div class="flex space-x-4">
+                    <!-- Logo and Brand name -->
+                    <div>
+                        <a href="#" class="flex items-center py-5 px-2 text-gray-700">
+                            <img src="{% static 'images/nexus.png' %}" alt="Logo" class="h-12 w-12 mr-4">
+                            <span class="font-bold text-white text-lg">NEXUSAI</span>
+                        </a>
+                    </div>
+                    <!-- Primary Navbar items -->
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="#" class="py-5 px-3 text-gray-300 hover:text-white">Home</a>
+                        <a href="#" class="py-5 px-3 text-gray-300 hover:text-white">About</a>
+                        <a href="#" class="py-5 px-3 text-gray-300 hover:text-white">Services</a>
+                        <a href="#" class="py-5 px-3 text-gray-300 hover:text-white">Contact</a>
+                        <a href="{% url 'job_list' %}" class="py-5 px-3 text-gray-300 hover:text-white">View Job Listings</a>
+                    </div>
+                </div>
+                <!-- Secondary Navbar items -->
+                <!-- Secondary Navbar items -->
+                <div class="hidden md:flex items-center space-x-3">
+                    {% if user.is_authenticated %}
+                        {% if user.employerprofile %} 
+                            <a href="{% url 'employer_profile_detail' pk=user.pk %}" class="py-5 px-3 text-gray-300 hover:text-white">My Profile</a>
+                        {% elif user.applicantprofile %}
+                            <a href="{% url 'applicant_profile_detail' pk=user.pk %}" class="py-5 px-3 text-gray-300 hover:text-white">My Profile</a>
+                        {% endif %}
+                        <a href="{% url 'logout' %}" class="py-2 px-3 bg-yellow-400 text-yellow-900 rounded hover:bg-yellow-300 transition duration-300">Logout</a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="py-5 px-3 text-gray-300 hover:text-white">Login</a>
+                        <a href="{% url 'register' %}" class="py-2 px-3 bg-yellow-400 text-yellow-900 rounded hover:bg-yellow-300 transition duration-300">Sign Up</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="my-8">
+        <div class="container mx-auto px-6">
+            <!-- Main content from first HTML -->
+            <section>
+                <h1 class="text-4xl font-bold text-gray-800">Welcome to Our Website</h1>
+                <p class="mt-2 text-indigo-600">This is a sample text for your webpage.</p>
+            </section>
+            <!-- Main content from second HTML -->
+            <section>
+                <h2>Find Your Dream Job or the Perfect Candidate</h2>
+                <p>Welcome to our comprehensive job portal. Whether you're seeking new career opportunities or searching for talented individuals to join your team, we've got you covered.</p>
+            </section>
+        </div>
+    </main>
+    <!-- Footer combining elements from both HTML files -->
+    <footer class="bg-indigo-800 text-gray-200">
+        <div class="container mx-auto p-4">
+            <p class="text-center">© 2024 Your Brand - ATS. All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+</html>

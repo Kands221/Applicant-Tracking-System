@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Profile</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Add any additional CSS or JavaScript links here -->
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto my-8 p-8 bg-white shadow-lg max-w-2xl rounded">
+        <h1 class="text-3xl font-bold text-gray-900">{{ profile.company_name }}</h1>
+        <p class="mt-4 text-gray-700"><strong>Description:</strong> {{ profile.company_description }}</p>
+        
+        <!-- Add more fields from the profile as needed -->
+        <p class="text-gray-700 mt-2"><strong>Location:</strong> {{ profile.location }}</p>
+        <!-- ... -->
+
+        <!-- Link to edit the profile -->
+        <a href="{% url 'edit_employer_profile' %}" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300">Edit Profile</a>
+    </div>
+</body>
+</html>

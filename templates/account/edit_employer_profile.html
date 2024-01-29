@@ -1,0 +1,22 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Job Seeker Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    {% block content %}
+        <h2>Edit Profile</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save Changes</button>
+        </form>
+    {% endblock %}
+    
+</body>
+</html>

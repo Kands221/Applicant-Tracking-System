@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Additional Custom Styling */
+        body {
+            background-color: #f3f4f6; /* Light gray background */
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #374151; /* Dark blue-gray */
+        }
+        .form-container button {
+            width: 100%;
+            background-color: #4f46e5; /* Indigo button */
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #4338ca; /* Darker indigo on hover */
+        }
+        /* styles.css */
+        .form-container input[type="text"],
+        .form-container input[type="password"] {
+            border: 1px solid #ccc;  /* Example style: 1px solid border with light gray color */
+            border-radius: 4px;      /* Optional: adds rounded corners */
+            padding: 8px;            /* Optional: adds some padding inside the input fields */
+            width: 100%;             /* Optional: makes the input fields take full width of the container */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Login</h2>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="mb-4">
+                {{ form.as_p }}
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Job Seeker Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <div class="container mx-auto my-8 p-8 bg-white shadow-lg max-w-lg rounded">
+        <h1 class="text-2xl font-bold text-gray-900 mb-2">Profile of {{ profile.user.username }}</h1>
+        <p class="text-gray-700"><span class="font-semibold">Email:</span> {{ profile.user.email }}</p>
+        <p class="text-gray-700"><span class="font-semibold">Skills:</span> {{ profile.skills }}</p>
+        <p class="text-gray-700"><span class="font-semibold">Experience:</span> {{ profile.experience }}</p>
+        {% if profile.resume %}
+            <p class="text-gray-700">
+                <span class="font-semibold">Resume:</span>
+                <a href="{{ profile.resume.url }}" class="text-blue-500 hover:text-blue-600 transition duration-300">
+                    Download Resume
+                </a>
+            </p>
+        {% endif %}
+    </div>
+    <a href="{% url 'edit_applicant_profile' %}">Edit Profile</a>
+</body>
+</html>

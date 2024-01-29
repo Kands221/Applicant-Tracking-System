@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Listings</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <nav class="bg-indigo-800">
+        <div class="container mx-auto">
+            <div class="flex justify-between">
+                <div class="flex space-x-4">
+                    <!-- Logo and Brand name -->
+                    <div>
+                        <a href="#" class="flex items-center py-5 px-2 text-gray-700">
+                            <img src="{% static 'images/nexus.png' %}" alt="Logo" class="h-8 w-8 mr-2">
+                            <span class="font-bold text-white text-lg">NEXUSAI</span>
+                        </a>
+                    </div>
+                    <!-- Primary Navbar items -->
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="#" class="py-5 px-3 text-gray-300 hover:text-white">Home</a>
+                        <a href="#" class="py-5 px-3 text-gray-300 hover:text-white">About</a>
+                        <a href="#" class="py-5 px-3 text-gray-300 hover:text-white">Services</a>
+                        <a href="#" class="py-5 px-3 text-gray-300 hover:text-white">Contact</a>
+                        <a href="{% url 'job_list' %}" class="py-5 px-3 text-gray-300 hover:text-white">View Job Listings</a>
+                    </div>
+                </div>
+                <!-- Secondary Navbar items -->
+                <!-- Secondary Navbar items -->
+                <div class="hidden md:flex items-center space-x-3">
+                    {% if user.is_authenticated %}
+                    {% if user.employerprofile %} 
+                    <a href="{% url 'employer_profile_detail' pk=user.pk %}" class="py-5 px-3 text-gray-300 hover:text-white">My Profile</a>
+                {% elif user.applicantprofile %}
+                    <a href="{% url 'applicant_profile_detail' pk=user.pk %}" class="py-5 px-3 text-gray-300 hover:text-white">My Profile</a>
+                {% endif %}
+                        <a href="{% url 'logout' %}" class="py-2 px-3 bg-yellow-400 text-yellow-900 rounded hover:bg-yellow-300 transition duration-300">Logout</a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="py-5 px-3 text-gray-300 hover:text-white">Login</a>
+                        <a href="{% url 'register' %}" class="py-2 px-3 bg-yellow-400 text-yellow-900 rounded hover:bg-yellow-300 transition duration-300">Sign Up</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container mx-auto p-6">
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Job Listings</h1>
+        <div class="flex justify-end mb-4">
+            <a href="{% url 'post_job' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Post a New Job
+            </a>
+        </div>
+        <ul>
+            {% for job in jobs %}
+            <li class="bg-white p-6 rounded-lg shadow mb-4">
+                <h2 class="text-xl font-bold text-gray-800">
+                    <a href="{% url 'job_detail' job.id %}" class="hover:text-blue-500">{{ job.title }}</a>
+                </h2>
+                <p class="text-gray-600">{{ job.description }}</p>
+            </li>
+            {% empty %}
+                <li class="text-gray-600">No jobs available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+
+
