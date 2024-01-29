@@ -1,3 +1,0 @@
-ML_models/* filter=lfs diff=lfs merge=lfs -text
-ML_models filter=lfs diff=lfs merge=lfs -text
-transformer filter=lfs diff=lfs merge=lfs -text
