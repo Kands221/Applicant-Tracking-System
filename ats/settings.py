@@ -84,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'initial_ATS',  # Database name
         'USER': 'postgres',
-        'PASSWORD': 'Kyle2201300412',
+        'PASSWORD': 'NexusAI2024',
         'HOST': 'ats.chm2ycaw6ttz.ap-southeast-1.rds.amazonaws.com',  # From RDS instance details
         'PORT': '5432',
     }
