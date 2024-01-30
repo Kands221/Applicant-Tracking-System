@@ -70,30 +70,6 @@
                 <span class="font-bold text-gray-800">Posted On:</span>
                 <span class="text-gray-600 ml-2">{{ job.posted_on|date:"F j, Y" }}</span>
             </div>
-            <!-- ... existing content ... -->
-
-            <form method="post" enctype="multipart/form-data" class="mb-4">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    Upload CV
-                </button>
-            </form>
-          
-            <!-- Existing content -->
-
-            {% if parsed_data %}
-            <div>
-                <h2>Processed Data:</h2>
-                <pre>{{ parsed_data }}</pre>  <!-- Adjust based on how you want to display the data -->
-            </div>
-            {% endif %}
-
-<!-- Rest of the template -->
-
-<!-- ... rest of the existing content ... -->
-
-            <!-- Include other job details as needed -->
         </div>
     </div>
 </body>
